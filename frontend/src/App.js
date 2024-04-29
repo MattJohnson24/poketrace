@@ -9,6 +9,23 @@ function App() {
   const [sprite, setSprite] = useState("")
 
   useEffect(() => {
+    fetch('/cookies').then(
+      res => res.json()
+    ).then(
+      response => {
+        console.log(response)
+        if(response === true){
+          document.documentElement.style.setProperty('--togglebuttons', '#FC3A3A');
+          document.documentElement.style.setProperty('--togglelight', '#2C363F');
+          document.documentElement.style.setProperty('--togglelight', '#2C363F');
+          document.documentElement.style.setProperty('--dark', 'none');
+          document.documentElement.style.setProperty('--light', 'initial');
+        }
+      }
+    )
+  }, [])
+
+  useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/1/").then(
       res => res.json()
     ).then(
